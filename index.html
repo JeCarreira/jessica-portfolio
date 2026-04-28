@@ -588,18 +588,24 @@ footer{background:var(--escuro);padding:40px 60px;display:flex;align-items:cente
 
 <div class="hero">
   <div class="hero-bg">
-    <div class="hero-slot">
-      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <div class="hero-slot" style="background:linear-gradient(170deg,#3D2010,#1A0A04);">
+      <video autoplay muted loop playsinline preload="auto"
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+        oncanplay="this.play()">
         <source src="videos/autocuidado.mp4" type="video/mp4">
       </video>
     </div>
-    <div class="hero-slot">
-      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <div class="hero-slot" style="background:linear-gradient(170deg,#2E1808,#120602);">
+      <video autoplay muted loop playsinline preload="auto"
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+        oncanplay="this.play()">
         <source src="videos/asmr.mp4" type="video/mp4">
       </video>
     </div>
-    <div class="hero-slot">
-      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <div class="hero-slot" style="background:linear-gradient(170deg,#3A1C0C,#180804);">
+      <video autoplay muted loop playsinline preload="auto"
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+        oncanplay="this.play()">
         <source src="videos/adidas.mp4" type="video/mp4">
       </video>
     </div>
@@ -1004,6 +1010,20 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 
 const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),(i%4)*80);obs.unobserve(e.target);}});}  ,{threshold:.08});
 document.querySelectorAll('.reveal,.galeria-item,.g-item,.gt-line1,.gt-line2,.gt-line3,.gal-stat').forEach(el=>obs.observe(el));
+
+// Force video autoplay
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.hero video').forEach(function(v) {
+    v.muted = true;
+    v.play().catch(function(){});
+  });
+});
+window.addEventListener('load', function() {
+  document.querySelectorAll('.hero video').forEach(function(v) {
+    v.muted = true;
+    v.play().catch(function(){});
+  });
+});
 </script>
 
 </body></html>
